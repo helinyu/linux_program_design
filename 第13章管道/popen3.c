@@ -12,7 +12,7 @@
 #include <string.h>
 
 int main(int argc,  const char * argv[]) {
-   
+    
     FILE *read_fp;
     char buffer[BUFSIZ+1];
     size_t chars_read;
@@ -24,6 +24,7 @@ int main(int argc,  const char * argv[]) {
         while (chars_read > 0) {
             buffer[chars_read - 1] = '\0';
             printf("Reading %d: - \n %p\n",BUFSIZ,read_fp);
+            chars_read = fread(buffer, sizeof(char), BUFSIZ, read_fp);
         }
         pclose(read_fp);
         exit(EXIT_SUCCESS);
